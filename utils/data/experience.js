@@ -9,7 +9,7 @@ export const experiences = [
     id: 2,
     title: "Flask Developer",
     company: "Blinkehost",
-    duration: "(Jun 2024 - Apr 2024 )"
+    duration: "(Apr 2024 - Jun 2024 )"
   },
   {
     id: 3,
