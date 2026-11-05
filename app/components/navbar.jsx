@@ -21,6 +21,9 @@ function Navbar() {
             </Link>
           </li>
           <li>
+            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#terminal"><div className="text-sm text-[#16f2b3] transition-colors duration-300 hover:text-pink-600 font-mono">&gt;_ TERMINAL</div></Link>
+          </li>
+          <li>
             <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#experience"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EXPERIENCE</div></Link>
           </li>
           <li>
@@ -30,7 +33,7 @@ function Navbar() {
             <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#education"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EDUCATION</div></Link>
           </li>
           <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/blog"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">BLOGS</div></Link>
+            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#posts"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">POSTS</div></Link>
           </li>
           <li>
             <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#projects"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PROJECTS</div></Link>

@@ -6,13 +6,16 @@ import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
+import AskWidget from "./components/helper/ask-widget";
 import ScrollToTop from "./components/helper/scroll-to-top";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio of Sachin Jadhav - Software Developer",
+  metadataBase: new URL("https://www.sachinjadhavofficial.com"),
+  alternates: { canonical: "/" },
+  title: "Sachin Jadhav | AI Engineer · Agents, RAG, MCP",
   description:
-    "This is the portfolio of Sachin Jadhav. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.",
+    "Sachin Jadhav, AI full-stack engineer at DXC Technology. Ships production AI agents end to end with Claude, MCP, RAG, Bedrock Knowledge Base, vector DBs and Python FastAPI. Built Integral Assistant, an agentic AI assistant for IBM i / SMART/400.",
 };
 
 export default function RootLayout({ children }) {
@@ -24,6 +27,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <ScrollToTop />
+          <AskWidget />
         </main>
         <Footer />
       </body>

@@ -4,10 +4,9 @@ import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
-import { SiLeetcode } from "react-icons/si";
 
 function HeroSection() {
   return (
@@ -26,12 +25,17 @@ function HeroSection() {
             Hello, <br />
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
-            {` , I'm a Professional `}
+            {`, I'm an `}
             <span className=" text-[#16f2b3]">{personalData.designation}</span>
-            .
+            {` at DXC Technology.`}
           </h1>
 
-          <div className="my-12 flex items-center gap-5">
+          <p className="mt-6 text-gray-300 text-base lg:text-xl leading-relaxed max-w-xl">
+            I ship production AI agents end to end: agentic workflows, RAG, MCP tools, APIs and UI,
+            built for the people and systems a business actually runs on.
+          </p>
+
+          <div className="my-10 flex items-center gap-5">
             <Link
               href={personalData.github}
               target='_blank'
@@ -53,20 +57,6 @@ function HeroSection() {
             >
               <FaFacebook size={30} />
             </Link>
-            <Link
-              href={personalData.leetcode}
-              target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <SiLeetcode size={30} />
-            </Link>
-            <Link
-              href={personalData.twitter}
-              target='_blank'
-              className="transition-all text-pink-500 hover:scale-125 duration-300"
-            >
-              <FaTwitterSquare size={30} />
-            </Link>
           </div>
 
           <div className="flex items-center gap-3">
@@ -83,6 +73,10 @@ function HeroSection() {
               <MdDownload size={16} />
             </Link>
           </div>
+
+          <Link href="#terminal" className="mt-6 font-mono text-sm text-gray-400 hover:text-[#16f2b3] transition-colors duration-200">
+            <span className="text-[#16f2b3]">$</span> prefer the command line? try my terminal ↓
+          </Link>
 
         </div>
         <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
@@ -111,35 +105,55 @@ function HeroSection() {
                 <span className="text-amber-300">Sachin Jadhav</span>
                 <span className="text-gray-400">{`',`}</span>
               </div>
+              <div>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">building:</span>
+                <span className="text-gray-400">{`'`}</span>
+                <span className="text-amber-300">Integral Assistant</span>
+                <span className="text-gray-400">{`',`}</span>
+              </div>
+              <div className="ml-4 lg:ml-8 mr-2">
+                <span className=" text-white">roles:</span>
+                <span className="text-gray-400">{`['`}</span>
+                <span className="text-amber-300">AI Engineer</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Forward Deployed Engineer</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">AI Full-Stack</span>
+                <span className="text-gray-400">{"'],"}</span>
+              </div>
               <div className="ml-4 lg:ml-8 mr-2">
                 <span className=" text-white">skills:</span>
                 <span className="text-gray-400">{`['`}</span>
-                <span className="text-amber-300">React</span>
+                <span className="text-amber-300">Claude</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NextJS</span>
+                <span className="text-amber-300">MCP</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Redux</span>
+                <span className="text-amber-300">LangChain</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Express</span>
+                <span className="text-amber-300">RAG</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NestJS</span>
+                <span className="text-amber-300">Agentic Workflows</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MySql</span>
+                <span className="text-amber-300">Bedrock KB</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MongoDB</span>
+                <span className="text-amber-300">Vector DB</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Docker</span>
+                <span className="text-amber-300">OpenTelemetry</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">AWS</span>
+                <span className="text-amber-300">Python</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">FastAPI</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">React + Vite</span>
                 <span className="text-gray-400">{"'],"}</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">hardWorker:</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">shipsToProduction:</span>
                 <span className="text-orange-400">true</span>
                 <span className="text-gray-400">,</span>
               </div>
               <div>
-                <span className="ml-4 lg:ml-8 mr-2 text-white">quickLearner:</span>
+                <span className="ml-4 lg:ml-8 mr-2 text-white">ownsEndToEnd:</span>
                 <span className="text-orange-400">true</span>
                 <span className="text-gray-400">,</span>
               </div>
@@ -159,7 +173,7 @@ function HeroSection() {
               </div>
               <div>
                 <span className="ml-12 lg:ml-24 text-cyan-400">this.</span>
-                <span className="mr-2 text-white">hardWorker</span>
+                <span className="mr-2 text-white">shipsToProduction</span>
                 <span className="text-amber-300">&amp;&amp;</span>
               </div>
               <div>

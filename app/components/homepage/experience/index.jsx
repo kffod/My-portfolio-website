@@ -54,17 +54,39 @@ function Experience() {
                           {experience.duration}
                         </p>
                       </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
+                      <div className="flex items-start gap-x-8 px-3 py-5">
                         <div className="text-violet-500  transition-all duration-300 hover:scale-125">
                           <BsPersonWorkspace size={36} />
                         </div>
-                        <div>
+                        <div className="flex-1">
                           <p className="text-base sm:text-xl mb-2 font-medium uppercase">
                             {experience.title}
                           </p>
                           <p className="text-sm sm:text-base">
                             {experience.company}
                           </p>
+                          {experience.subtitle &&
+                            <p className="mt-1 text-xs sm:text-sm text-[#16f2b3]">{experience.subtitle}</p>
+                          }
+                          {experience.highlights &&
+                            <ul className="mt-4 space-y-2">
+                              {experience.highlights.map(([label, text]) => (
+                                <li key={label} className="flex gap-2 text-xs sm:text-sm leading-relaxed text-gray-300">
+                                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-pink-500"></span>
+                                  <span><span className="font-semibold text-white">{label}:</span> {text}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          }
+                          {experience.stack &&
+                            <div className="mt-4 flex flex-wrap gap-1.5">
+                              {experience.stack.map((item) => (
+                                <span key={item} className="rounded-full border border-[#16f2b3]/40 bg-[#16f2b3]/5 px-2.5 py-0.5 text-[11px] text-[#16f2b3]">
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
+                          }
                         </div>
                       </div>
                     </div>

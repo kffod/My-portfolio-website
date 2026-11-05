@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sachin Jadhav, AI full-stack engineer who ships production AI agents end to end (Claude, MCP, RAG, FastAPI). Terminal portfolio featuring Integral Assistant, an agentic AI assistant for IBM i / SMART/400.">
+    <meta name="keywords" content="Sachin Jadhav, Sachin, Jadhav, Portfolio, Sachin Jadhav Portfolio, DXC Technology, Gen AI, AI Agents, MCP, Claude, Amazon Bedrock, IBM i, AS400, Integral Assistant">
+    <meta name="author" content="Sachin Jadhav">
+    <meta name="theme-color" content="#000000">    
+
+    <title>Sachin Jadhav</title>
+    <link rel="stylesheet"  href="styles.css" />
+</head>
+
+<body>
+    <div class="shell" id="shell">
+        <div id = "loading" class="text-blue">
+            <br>
+            <br>
+            <div class="loading-bar">
+                <pre id="loading-ascii-art"></pre>
+                <div id="loading-text"></div>
+                <div id = "fill"></div>
+                <pre class="loading-bar__animation"></pre>
+              </div>
+        </div>
+        <div id = "command-interface">
+            <div class="ascii">
+                <pre id="ascii-art"></pre>
+            </div>
+            <div id="output"></div>
+            <div id="command-line">
+                <span id="prompt" ><span class="text-blue">@sachin-jadhav/portfolio:$</span></span>
+                <input type="text" id="command-input" class="input">
+                <span id="cursor">_</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="commands/ascii.js" type="module"></script>
+<script src="loading.js"></script>
+<script src="script.js" type="module"></script>

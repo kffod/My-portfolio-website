@@ -9,6 +9,15 @@ import bootstrap from '/public/svg/skills/bootstrap.svg';
 import bulma from '/public/svg/skills/bulma.svg';
 import c from '/public/svg/skills/c.svg';
 import canva from '/public/svg/skills/canva.svg';
+import claude from '/public/svg/skills/claude.svg';
+import fastapi from '/public/svg/skills/fastapi.svg';
+import ibm from '/public/svg/skills/ibm.svg';
+import jenkins from '/public/svg/skills/jenkins.svg';
+import kubernetes from '/public/svg/skills/kubernetes.svg';
+import langchain from '/public/svg/skills/langchain.svg';
+import mcp from '/public/svg/skills/mcp.svg';
+import opentelemetry from '/public/svg/skills/opentelemetry.svg';
+import splunk from '/public/svg/skills/splunk.svg';
 import capacitorjs from '/public/svg/skills/capacitorjs.svg';
 import coffeescript from '/public/svg/skills/coffeescript.svg';
 import cplusplus from '/public/svg/skills/cplusplus.svg';
@@ -225,6 +234,28 @@ export const skillsImage = (skill) => {
       return wolframalpha;
     case 'canva':
       return canva;
+    case 'claude':
+      return claude;
+    case 'mcp':
+      return mcp;
+    case 'langchain':
+      return langchain;
+    case 'opentelemetry':
+      return opentelemetry;
+    case 'fastapi':
+      return fastapi;
+    case 'kubernetes':
+      return kubernetes;
+    case 'jenkins':
+      return jenkins;
+    case 'splunk':
+      return splunk;
+    case 'ibm i / as400':
+      return ibm;
+    case 'bedrock kb':
+      return aws;
+    case 'vite':
+      return vitejs;
     default:
       break;
   }

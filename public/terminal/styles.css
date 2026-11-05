@@ -1,0 +1,234 @@
+ html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: monospace;
+    overflow-y: hidden;
+    background-color: black;
+}
+
+.shell {
+    color: white;
+    font-family: monospace;
+    overflow: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100vh;  
+
+}
+#loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#fill {
+    overflow: clip
+}
+.loading-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    height: 90vh;
+}
+#loading-text {
+    margin-top: 20px;
+}
+#loading-ascii-art {
+    text-align: center;
+}
+#command-interface {
+    vertical-align: top
+}
+.menu {
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.prompt {
+    display: inline-block;
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: monospace;
+    font-size: inherit;
+    outline: none;
+    width: 1ch;
+    caret-color: transparent;
+}
+
+.output, .output-project {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+  }
+
+  
+  .text-green {
+    color: #7CFC00;
+  }
+  
+  .text-blue {
+    color: #B0E0E6;
+  }
+  
+  .text-yellow {
+    color: #FFFF00;
+  }
+  
+  .text-pink {
+    color: #FF1493;
+  }
+
+  .text-red {
+    color: #FF0000;
+  } 
+
+    .text-orange {
+        color: #FFA500;
+    }
+
+    .text-gray {
+        color: #acadab;
+    }
+
+
+#command-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#prompt {
+    font-size: 12px;
+}
+
+#command {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+#cursor {
+    font-size: 24px;
+    animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ---------- integral command (Integral Assistant demo) ---------- */
+.ia-banner {
+    margin: 4px 0;
+    text-shadow: 0 0 6px rgba(124, 252, 0, .45);
+}
+.ia-session { margin: 0; }
+.ia-line {
+    white-space: pre-wrap;
+    min-height: 1.2em;
+    line-height: 1.45;
+}
+.ia-pre { margin: 6px 0; line-height: 1.25; }
+.ia-caret { animation: blink 0.8s steps(1) infinite; color: #7CFC00; }
+.ia-blink { animation: blink 1s steps(1) infinite; }
+
+/* IBM 5250 green screen */
+.ia-5250 {
+    display: inline-block;
+    margin: 8px 0 4px 2ch;
+    padding: 8px 14px;
+    color: #33ff66;
+    background: #031a08;
+    border: 1px solid #1f8f3a;
+    border-radius: 6px;
+    box-shadow: 0 0 18px rgba(51, 255, 102, .18), inset 0 0 30px rgba(0, 0, 0, .6);
+    text-shadow: 0 0 4px rgba(51, 255, 102, .8);
+    position: relative;
+    overflow: hidden;
+    line-height: 1.35;
+}
+.ia-5250::after {           /* CRT scanlines */
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, .25) 3px
+    );
+}
+.ia-field {
+    display: inline-block;
+    min-width: 14ch;
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #1f8f3a;
+}
+
+/* approval gate */
+.ia-warn {
+    color: #000;
+    background: #FFFF00;
+    padding: 0 6px;
+    font-weight: bold;
+    animation: ia-pulse 1.2s ease-in-out infinite;
+}
+@keyframes ia-pulse {
+    0%, 100% { box-shadow: 0 0 0 rgba(255, 255, 0, 0); }
+    50% { box-shadow: 0 0 12px rgba(255, 255, 0, .7); }
+}
+
+/* themes: `theme green` / `theme amber` */
+body.theme-green .shell, body.theme-green .input { color: #33ff66; text-shadow: 0 0 4px rgba(51, 255, 102, .45); }
+body.theme-amber .shell, body.theme-amber .input { color: #ffb000; text-shadow: 0 0 4px rgba(255, 176, 0, .45); }
+
+/* neofetch + ask */
+.neofetch { display: flex; flex-wrap: wrap; gap: 3ch; align-items: flex-start; }
+.neofetch pre { margin: 0; }
+.ask-box { line-height: 1.5; max-width: 110ch; }
+
+/* default links/headings on the black terminal */
+.shell a { color: #B0E0E6; }
+.info h2, .about-container h1 { color: #7CFC00; }
+
+@media screen and (max-width: 600px) {
+    .ia-5250 { font-size: 9px; margin-left: 0; }
+    .ia-pre { font-size: 7px; }
+}
+
+@media screen and (max-width: 800px) {
+    .ascii, #loading-ascii-art {
+        font-size: 8px;
+        
+    }
+}
+/* Make ascii-art mobile responsive */
+@media screen and (max-width: 600px) {
+    .ascii, .ascii-art, #loading-ascii-art {
+        font-size: 5px;
+        
+    }
+}
+
+
