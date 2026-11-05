@@ -13,7 +13,6 @@ Personal portfolio of Sachin Jadhav, AI Full-Stack Engineer at DXC Technology. O
 ```
 app/                     Next.js pages and components
   api/ask/route.js       "Ask my portfolio" endpoint (retrieval + Claude, rate-limited)
-  api/contact/route.js   contact form → Telegram
   components/homepage/   page sections (about, terminal, projects, certifications, ...)
 utils/data/              all site content: experience, projects, skills, certifications, posts
 utils/ask/               knowledge base + retriever for the assistant
@@ -58,7 +57,7 @@ All optional. With no model key set, the assistant answers for free with the bes
 | `LLM_API_KEY`, `LLM_BASE_URL`, `LLM_MODEL` | no | any OpenAI-compatible model (e.g. a free Groq or Gemini key) |
 | `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL` | no | use Claude instead (used first if set) |
 | `ASK_RATE_LIMIT`, `ASK_DAILY_LIMIT` | no | assistant limits (default 8 per visitor per 10 min, 300 per day) |
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | for the contact form | where contact messages are sent |
+| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | for the contact form | free key from web3forms.com; without it the form opens the visitor's email app |
 
 ## Deploy
 
