@@ -19,12 +19,6 @@ export const experiences = [
       ["Version control & releases", "Managed the base repository and version control; every production deployment gets a date-stamped tag, GitHub Release and changelog entry."],
     ],
     stack: ["Claude", "MCP", "RAG", "Bedrock KB", "Vector DB", "Python", "FastAPI", "React + Vite", "PostgreSQL", "AWS"],
-  },
-  {
-    id: 2,
-    title: "Flask Developer",
-    company: "Blinkehost",
-    duration: "(Apr 2024 - Jun 2024 )"
   }
 ]
 
