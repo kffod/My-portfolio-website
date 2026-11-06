@@ -9,6 +9,7 @@ export const personalData = {
   github: 'https://github.com/kffod',
   facebook: 'https://www.facebook.com/people/Sachin-Jadhav/pfbid02AGADSB4ggRZcVFPoxQvWn93K9PRBegTa4L6non9PjwX3nmZGPFtSf4HtExA3PsQAl/',
   linkedIn: 'https://www.linkedin.com/in/sachin-jadhav-a3667b248/',
+  youtube: 'https://www.youtube.com/@sophisticatedguyd',
   devUsername: "",
   resume: "https://drive.google.com/file/d/1l0b2tm_yctVYfcCNwFGVclJtLw34AICF/view?usp=sharing"
 }

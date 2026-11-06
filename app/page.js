@@ -7,6 +7,7 @@ import HeroSection from "./components/homepage/hero-section";
 import LinkedInPosts from "./components/homepage/linkedin-posts";
 import Projects from "./components/homepage/projects";
 import Skills from "./components/homepage/skills";
+import Videos from "./components/homepage/videos";
 import TerminalSection from "./components/homepage/terminal";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Certifications />
       <Education />
       <LinkedInPosts />
+      <Videos />
       <ContactSection />
     </>
   )

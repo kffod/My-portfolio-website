@@ -3,7 +3,7 @@
 import { personalData } from "@/utils/data/personal-data";
 import Image from "next/image";
 import Link from "next/link";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsYoutube } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
@@ -26,7 +26,7 @@ function HeroSection() {
             This is {' '}
             <span className=" text-pink-500">{personalData.name}</span>
             {`, I'm an `}
-            <span className=" text-[#16f2b3]">{personalData.designation}</span>
+            <span className=" text-accent">{personalData.designation}</span>
             {` at DXC Technology.`}
           </h1>
 
@@ -51,6 +51,13 @@ function HeroSection() {
               <BsLinkedin size={30} />
             </Link>
             <Link
+              href={personalData.youtube}
+              target='_blank'
+              className="transition-all text-pink-500 hover:scale-125 duration-300"
+            >
+              <BsYoutube size={30} />
+            </Link>
+            <Link
               href={personalData.facebook}
               target='_blank'
               className="transition-all text-pink-500 hover:scale-125 duration-300"
@@ -61,7 +68,7 @@ function HeroSection() {
 
           <div className="flex items-center gap-3">
             <Link href="#contact" className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600">
-              <button className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3">
+              <button className="px-3 text-xs md:px-8 py-3 md:py-4 bg-page rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3">
                 <span>Contact me</span>
                 <RiContactsFill size={16} />
               </button>
@@ -74,12 +81,12 @@ function HeroSection() {
             </Link>
           </div>
 
-          <Link href="#terminal" className="mt-6 font-mono text-sm text-gray-400 hover:text-[#16f2b3] transition-colors duration-200">
-            <span className="text-[#16f2b3]">$</span> prefer the command line? try my terminal ↓
+          <Link href="#terminal" className="mt-6 font-mono text-sm text-gray-400 hover:text-accent transition-colors duration-200">
+            <span className="text-accent">$</span> prefer the command line? try my terminal ↓
           </Link>
 
         </div>
-        <div className="order-1 lg:order-2 from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37]">
+        <div className="order-1 lg:order-2 from-page border-edge/60 relative rounded-lg border bg-gradient-to-r to-deep">
           <div className="flex flex-row">
             <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
             <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>

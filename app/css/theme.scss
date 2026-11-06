@@ -1,0 +1,121 @@
+// Site themes: Midnight (default), Terminal Green and Amber.
+// Each colour is stored as RGB channels so Tailwind can add opacity (e.g. border-accent/40).
+// The theme switcher sets data-theme on <html>; tailwind.theme.js maps the colour names to these.
+
+:root {
+  color-scheme: dark;
+
+  // four background shades
+  --c-page: 13 18 36;        // #0d1224 page
+  --c-deep: 10 13 55;        // #0a0d37 gradient end
+  --c-surface: 17 21 44;     // #11152c cards, inputs
+  --c-raised: 26 20 67;      // #1a1443 section labels
+  // lines
+  --c-line: 31 34 60;        // #1f223c subtle borders
+  --c-edge: 53 58 82;        // #353a52 stronger borders
+  // text
+  --c-accent: 22 242 179;    // #16f2b3 highlight
+  --c-soft: 211 216 232;     // #d3d8e8 body copy
+  --c-muted: 136 144 166;    // #8890a6 small print (5:1 or better on every background)
+  // brand gradient (replaces Tailwind's pink/violet shades)
+  --c-pink-500: 236 72 153;
+  --c-pink-600: 219 39 119;
+  --c-violet-100: 237 233 254;
+  --c-violet-400: 167 139 250;
+  --c-violet-500: 139 92 246;
+  --c-violet-600: 124 58 237;
+}
+
+[data-theme="green"] {
+  --c-page: 5 12 8;
+  --c-deep: 3 20 10;
+  --c-surface: 10 22 14;
+  --c-raised: 12 38 20;
+  --c-line: 20 48 28;
+  --c-edge: 34 74 44;
+  --c-accent: 51 255 102;
+  --c-soft: 200 240 210;
+  --c-muted: 111 154 122;
+  --c-pink-500: 34 197 94;
+  --c-pink-600: 22 163 74;
+  --c-violet-100: 204 251 241;
+  --c-violet-400: 45 212 191;
+  --c-violet-500: 20 184 166;
+  --c-violet-600: 13 148 136;
+}
+
+[data-theme="amber"] {
+  --c-page: 15 10 3;
+  --c-deep: 26 16 4;
+  --c-surface: 24 17 8;
+  --c-raised: 41 27 8;
+  --c-line: 51 36 15;
+  --c-edge: 82 58 24;
+  --c-accent: 255 176 0;
+  --c-soft: 240 226 200;
+  --c-muted: 166 141 102;
+  --c-pink-500: 245 158 11;
+  --c-pink-600: 217 119 6;
+  --c-violet-100: 255 237 213;
+  --c-violet-400: 251 146 60;
+  --c-violet-500: 249 115 22;
+  --c-violet-600: 234 88 12;
+}
+
+body {
+  color: #fff;
+  background-color: rgb(var(--c-page));
+  transition: background-color 0.3s ease;
+}
+
+::selection {
+  background: rgb(var(--c-violet-600) / 0.45);
+  color: #fff;
+}
+
+// dark scrollbars in every browser
+html {
+  scrollbar-color: rgb(var(--c-edge)) rgb(var(--c-page));
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--c-page));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--c-edge));
+  border-radius: 8px;
+  border: 2px solid rgb(var(--c-page));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--c-violet-500));
+}
+
+// stop browser autofill painting the contact form fields white or yellow
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px rgb(var(--c-surface)) inset;
+  caret-color: #fff;
+  transition: background-color 9999s ease-out;
+}
+
+// the decorative background artwork is purple; tint it to match the other themes
+[data-theme="green"] {
+  img[src*="hero.svg"],
+  img[src*="section.svg"],
+  img[src*="blur-23.svg"] {
+    filter: hue-rotate(-130deg) saturate(0.9);
+  }
+}
+[data-theme="amber"] {
+  img[src*="hero.svg"],
+  img[src*="section.svg"],
+  img[src*="blur-23.svg"] {
+    filter: hue-rotate(140deg) saturate(1.1);
+  }
+}

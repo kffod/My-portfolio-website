@@ -80,11 +80,11 @@ function ContactWithoutCaptcha() {
 
   return (
     <div className="">
-      <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
+      <p className="font-medium mb-5 text-accent text-xl uppercase">
         Contact with me
       </p>
-      <form onSubmit={handleSendMail} noValidate className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
-        <p className="text-sm text-[#d3d8e8]">
+      <form onSubmit={handleSendMail} noValidate className="max-w-3xl text-white rounded-lg border border-edge p-3 lg:p-5">
+        <p className="text-sm text-soft">
           {"Hiring for an AI Engineer, Forward Deployed Engineer or AI Full-Stack role, or building agents for a real business? Send me a message and I'll reply by email."}
         </p>
         <div className="mt-6 flex flex-col gap-4">
@@ -92,7 +92,7 @@ function ContactWithoutCaptcha() {
             <label htmlFor="contact-name" className="text-base">Your Name: </label>
             <input
               id="contact-name"
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+              className="bg-surface w-full border rounded-md border-edge focus:border-accent ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="text"
               maxLength="100"
               autoComplete="name"
@@ -107,7 +107,7 @@ function ContactWithoutCaptcha() {
             <label htmlFor="contact-email" className="text-base">Your Email: </label>
             <input
               id="contact-email"
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+              className="bg-surface w-full border rounded-md border-edge focus:border-accent ring-0 outline-0 transition-all duration-300 px-3 py-2"
               type="email"
               maxLength="100"
               autoComplete="email"
@@ -128,7 +128,7 @@ function ContactWithoutCaptcha() {
             <label htmlFor="contact-message" className="text-base">Your Message: </label>
             <textarea
               id="contact-message"
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
+              className="bg-surface w-full border rounded-md border-edge focus:border-accent ring-0 outline-0 transition-all duration-300 px-3 py-2"
               maxLength="500"
               name="message"
               required={true}
@@ -165,9 +165,9 @@ function ContactWithoutCaptcha() {
               <span>{sending ? 'Sending…' : 'Send Message'}</span>
               <TbMailForward className="mt-1" size={18} />
             </button>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted">
               Or email me directly at{' '}
-              <a href={`mailto:${personalData.email}`} className="text-[#16f2b3] hover:text-pink-500">{personalData.email}</a>
+              <a href={`mailto:${personalData.email}`} className="text-accent hover:text-pink-500">{personalData.email}</a>
             </p>
           </div>
         </div>

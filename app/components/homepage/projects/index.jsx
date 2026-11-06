@@ -14,7 +14,7 @@ function Projects() {
   const shown = active === "All" ? others : others.filter((p) => p.category.includes(active));
 
   return (
-    <div id="projects" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div id="projects" className="relative z-50 border-t my-12 lg:my-24 border-line">
       <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20"></div>
 
       <div className="flex justify-center -translate-y-[1px]">
@@ -25,11 +25,11 @@ function Projects() {
 
       <div className="flex justify-center my-5 lg:py-8">
         <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+          <span className="w-24 h-[2px] bg-raised"></span>
+          <span className="bg-raised w-fit text-white p-2 px-5 text-xl rounded-md">
             Projects
           </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          <span className="w-24 h-[2px] bg-raised"></span>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ function Projects() {
 
       <div className="mt-14 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <p className="text-lg lg:text-xl font-medium text-white">
-          More projects <span className="text-sm text-gray-500">({shown.length})</span>
+          More projects <span className="text-sm text-muted">({shown.length})</span>
         </p>
         <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter projects">
           {categories.map((c) => (
@@ -53,7 +53,7 @@ function Projects() {
               className={`rounded-full px-3 py-1 font-mono text-xs lg:text-sm transition-all duration-200 ${
                 active === c
                   ? "bg-gradient-to-r from-pink-500 to-violet-600 text-white"
-                  : "border border-[#1f223c] bg-[#11152c] text-gray-300 hover:border-violet-500 hover:text-white"
+                  : "border border-line bg-surface text-gray-300 hover:border-violet-500 hover:text-white"
               }`}
             >
               {c}

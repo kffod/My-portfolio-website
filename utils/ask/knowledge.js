@@ -114,6 +114,12 @@ export function buildKnowledge() {
   linkedinPosts.forEach((p) => add(`LinkedIn post: ${p.title}`, `Posted ${p.date}. ${p.excerpt}`, p.url));
 
   add(
+    "YouTube channel",
+    "Sachin has a YouTube channel, @sophisticatedguyd (https://www.youtube.com/@sophisticatedguyd). The Videos section of this site shows his newest non-gaming uploads plus a few picked videos, and you can play them right on the page.",
+    "/#videos"
+  );
+
+  add(
     "Contact",
     `Website: ${personalData.website}. Email: ${personalData.email}. LinkedIn: ${personalData.linkedIn}. GitHub: ${personalData.github}. Based in Mumbai, India. ` +
       "The contact form at the bottom of the site also reaches him.",

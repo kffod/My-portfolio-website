@@ -1,3 +1,5 @@
+const themeColors = require("./tailwind.theme.js");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: themeColors,
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

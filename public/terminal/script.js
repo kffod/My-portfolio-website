@@ -1,5 +1,6 @@
 import * as Integral from "./commands/integral.js";
 import * as Ask from "./commands/ask.js";
+import * as Games from "./commands/games.js";
 
 // true when this terminal runs inside an iframe (e.g. embedded in the main portfolio site)
 const EMBEDDED = window.self !== window.top;
@@ -76,6 +77,10 @@ const commands = [
       description: "my LinkedIn posts (alias: featured)",
   },
   {
+      name: "youtube",
+      description: "my YouTube channel",
+  },
+  {
       name: "ask [question]",
       description: "ask about my work (searches this portfolio, answers with sources)",
   },
@@ -94,6 +99,18 @@ const commands = [
   {
       name: "theme [default|green|amber]",
       description: "change the terminal colours",
+  },
+  {
+      name: "play",
+      description: "Guardrail: approve or reject an AI agent's actions (30s)",
+  },
+  {
+      name: "ctf",
+      description: "capture the flag: find the hidden flag",
+  },
+  {
+      name: "achievements",
+      description: "your progress (shared with the main site)",
   },
   {
       name: "certifications",
@@ -125,6 +142,7 @@ const commands = [
 const links = {
   "website": "https://www.sachinjadhavofficial.com/",
   "github": "https://github.com/kffod",
+  "youtube": "https://www.youtube.com/@sophisticatedguyd",
   "linkedin": "https://www.linkedin.com/in/sachin-jadhav-a3667b248/",
   "resume": "https://drive.google.com/file/d/1l0b2tm_yctVYfcCNwFGVclJtLw34AICF/view?usp=sharing",
 };
@@ -137,12 +155,27 @@ function escapeHtml(s) {
 
 // ---------- extras: neofetch, sudo, theme ----------
 const THEMES = ["default", "green", "amber"];
+const THEME_KEY = "portfolio-theme"; // shared with the main site (same origin)
+const toSite = (t) => (t === "default" ? "midnight" : t);
+const fromSite = (t) => (t === "midnight" ? "default" : t);
 
 function applyTheme(name) {
   THEMES.forEach((t) => document.body.classList.remove(`theme-${t}`));
   if (name && name !== "default") document.body.classList.add(`theme-${name}`);
 }
-try { applyTheme(localStorage.getItem("terminal-theme") || "default"); } catch (e) {}
+try {
+  const saved = localStorage.getItem(THEME_KEY);
+  applyTheme(saved ? fromSite(saved) : (localStorage.getItem("terminal-theme") || "default"));
+} catch (e) {}
+
+// the main site switches the terminal's theme with postMessage({ type: "terminal:theme", theme })
+window.addEventListener("message", function (event) {
+  if (event.origin !== window.location.origin) return;
+  const data = event.data || {};
+  if (data.type !== "terminal:theme") return;
+  const t = fromSite(String(data.theme || ""));
+  if (THEMES.includes(t)) applyTheme(t);
+});
 
 function timeAtDxc() {
   const start = new Date(2025, 5, 1); // Jun 2025, counted inclusively like LinkedIn
@@ -208,11 +241,16 @@ function sudo(cmd) {
 }
 
 function setTheme(cmd) {
-  const arg = (cmd.split(" ")[1] || "").replace("undefined", "");
+  let arg = (cmd.split(" ")[1] || "").replace("undefined", "");
+  if (arg === "midnight") arg = "default";
   if (!THEMES.includes(arg)) return `usage: <span class="text-red">theme</span> [${THEMES.join("|")}]`;
   applyTheme(arg);
-  try { localStorage.setItem("terminal-theme", arg); } catch (e) {}
-  return `theme set to <span class="text-green">${arg}</span>`;
+  try { localStorage.setItem(THEME_KEY, toSite(arg)); } catch (e) {}
+  // embedded in the main site: switch the whole site too
+  if (EMBEDDED) {
+    try { window.parent.postMessage({ type: "portfolio:theme", theme: toSite(arg) }, window.location.origin); } catch (e) {}
+  }
+  return `theme set to <span class="text-green">${arg}</span>` + (EMBEDDED ? ' <span class="text-gray">(the whole site switched too)</span>' : "");
 }
 
 const commandHistory = [];
@@ -279,6 +317,10 @@ certifications: function () {
   posts: function () {
     return FileSystem.readFile("commands/featured.html");
   },
+  youtube: function () {
+    window.open(links.youtube, "_blank");
+    return `Opening my YouTube channel. <span class="text-gray">(pop-up blocked? <a href="${links.youtube}" target="_blank" rel="noopener">open it here</a>)</span><br><span class="text-gray">The latest videos are also on the main site under Videos.</span>`;
+  },
   ask: function (raw) {
     return Ask.render(raw);
   },
@@ -295,6 +337,7 @@ certifications: function () {
   theme: function (cmd) {
     return setTheme(cmd);
   },
+  ...Object.fromEntries(Games.COMMANDS.map((name) => [name, (raw) => Games.render(name, raw)])),
   contact: function () {
     // Read about section from about.html
     // return aboutText;
@@ -344,13 +387,15 @@ const postRenderFunctions = {
   },
   ask: function () {
     Ask.run();
-  }
+  },
+  ...Object.fromEntries(Games.COMMANDS.map((name) => [name, () => Games.after(name)])),
 };
 
 output.innerHTML += "Type <span class='text-red'>'help'</span> for a list of commands. <br />" +
   "<span class='text-gray'>AI engineer · I ship production AI agents end to end.</span> <br />" +
   "type <span class='text-red'>'integral'</span> to watch my latest project, " +
-  "<span class='text-green'>Integral Assistant</span>, drive an IBM i green screen. <br /> <br />";
+  "<span class='text-green'>Integral Assistant</span>, drive an IBM i green screen. <br />" +
+  "<span class='text-gray'>bored? try</span> <span class='text-red'>'play'</span> <span class='text-gray'>or</span> <span class='text-red'>'ctf'</span>. <br /> <br />";
 if (!EMBEDDED) input.focus();  
 input.addEventListener("keydown", function (event) {
   // Ctrl+C interrupts a running Integral demo
@@ -377,13 +422,14 @@ input.addEventListener("keydown", function (event) {
       const command = input.value.trim().split(/\s+/)[0];
       const commandArgs = input.value.trim().split(/\s+/)[1];
       input.value = "";
-      const echo = command === "ask" ? escapeHtml(rawInput) : `${escapeHtml(command)} ${escapeHtml(commandArgs || '')}`;
+      const echo = (command === "ask" || Games.RAW.has(command)) ? escapeHtml(rawInput) : `${escapeHtml(command)} ${escapeHtml(commandArgs || '')}`;
       output.innerHTML += `${prompt.innerHTML}${echo}<br /> <br />`;
         if (commandFunctions[command]) {
-          output.innerHTML += commandFunctions[command](command === "ask" ? rawInput : `${command} ${commandArgs}`) + "<br />";
+          output.innerHTML += commandFunctions[command]((command === "ask" || Games.RAW.has(command)) ? rawInput : `${command} ${commandArgs}`) + "<br />";
           if (postRenderFunctions[command]) {
             postRenderFunctions[command]();
           }
+          Games.onCommand(command, commandArgs);
         } else if (command === "clear") {
           output.innerHTML = "";
       } else {
@@ -438,7 +484,7 @@ function runFromParent(command, tries) {
     setTimeout(() => runFromParent(command, tries + 1), 250);
     return;
   }
-  if (Integral.isRunning()) return;
+  if (Integral.isRunning() || Games.isRunning()) return;
   input.value = command.slice(0, 300);
   resizeInput();
   input.focus({ preventScroll: true });

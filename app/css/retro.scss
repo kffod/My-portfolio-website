@@ -1,0 +1,41 @@
+// Hidden retro theme: an IBM 5250 green screen with scanlines.
+// Unlocked with the Konami code (↑ ↑ ↓ ↓ ← → ← → B A); enter it again to switch back.
+// Uses the same colour variables as theme.scss.
+
+[data-theme="retro"] {
+  --c-page: 0 0 0;
+  --c-deep: 0 8 2;
+  --c-surface: 2 14 4;
+  --c-raised: 4 26 8;
+  --c-line: 12 60 22;
+  --c-edge: 22 100 40;
+  --c-accent: 51 255 102;
+  --c-soft: 170 255 190;
+  --c-muted: 86 200 116;
+  --c-pink-500: 51 255 102;
+  --c-pink-600: 34 197 94;
+  --c-violet-100: 220 255 230;
+  --c-violet-400: 86 220 126;
+  --c-violet-500: 51 200 90;
+  --c-violet-600: 22 163 74;
+
+  body {
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+    text-shadow: 0 0 3px rgb(51 255 102 / 0.45);
+  }
+
+  // CRT scanlines over everything; clicks pass straight through
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.2) 2px 3px);
+  }
+
+  // photos, logos and artwork turn phosphor green
+  img {
+    filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(3) brightness(0.9);
+  }
+}

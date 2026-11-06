@@ -253,6 +253,7 @@ export async function run() {
     if (decision) {
       await tool("screen_5250_create_client", "commit=⟨injected server-side⟩", "saved", 900);
       line(`<span class="text-green">✓ write verified</span>  <span class="text-gray">commit_state=verified · logged to the write log</span>`);
+      try { window.dispatchEvent(new CustomEvent("terminal:achievement", { detail: "approver" })); } catch (e) {}
     } else {
       line(`<span class="text-red">✗ rejected</span>  <span class="text-gray">nothing was written to the LPAR · commit_state=not_attempted</span>`);
     }

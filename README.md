@@ -35,6 +35,9 @@ Edit the terminal directly in `public/terminal/`. It's served as static files, s
 | `ask <question>` | ask about my work, with cited sources (uses `/api/ask`) |
 | `posts` | my LinkedIn posts |
 | `neofetch`, `sudo hire-sachin`, `theme [default\|green\|amber]` | extras |
+| `play` | Guardrail: approve an AI agent's safe actions, reject the dangerous ones (30s) |
+| `ctf` | capture the flag (tools: `ls`, `cat`, `decode`, `rot13`, `hint`, `submit`) |
+| `achievements` | progress, shared with the corner badge on the site |
 | `resume`, `links`, `open <name>`, `contact`, `surprise`, `clear` | misc |
 
 The home page sends commands into the embedded terminal with

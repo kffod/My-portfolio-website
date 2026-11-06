@@ -13,7 +13,7 @@ function askAbout(question) {
 
 function FeaturedProject({ project }) {
   return (
-    <div className="relative rounded-xl border border-violet-500/40 bg-gradient-to-br from-[#1a1443] via-[#0d1224] to-[#0a0d37] shadow-[0_0_50px_0_rgba(130,40,236,0.25)] overflow-hidden">
+    <div className="relative rounded-xl border border-violet-500/40 bg-gradient-to-br from-raised via-page to-deep shadow-[0_0_50px_0_rgb(var(--c-violet-600)/0.25)] overflow-hidden">
       <div className="flex flex-row">
         <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
         <div className="h-[2px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
@@ -25,20 +25,20 @@ function FeaturedProject({ project }) {
             <span className="rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 py-1 font-semibold uppercase tracking-wider text-white">
               Featured
             </span>
-            {project.org && <span className="text-[#16f2b3]">{project.org}</span>}
-            {project.org && project.period && <span className="text-gray-500">·</span>}
+            {project.org && <span className="text-accent">{project.org}</span>}
+            {project.org && project.period && <span className="text-muted">·</span>}
             {project.period && <span className="text-gray-400">{project.period}</span>}
           </div>
 
           <h3 className="mt-4 text-2xl lg:text-4xl font-bold text-white">{project.name}</h3>
-          <p className="mt-1 text-base lg:text-xl text-[#16f2b3]">{project.tagline}</p>
+          <p className="mt-1 text-base lg:text-xl text-accent">{project.tagline}</p>
           <p className="mt-4 text-sm lg:text-base leading-relaxed text-gray-300">{project.description}</p>
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {project.highlights.map((h) => {
               const Icon = ICONS[h.icon] || FaRobot;
               return (
-                <div key={h.title} className="rounded-lg border border-[#1f223c] bg-[#11152c]/80 p-3 hover:border-violet-500 transition-all duration-300">
+                <div key={h.title} className="rounded-lg border border-line bg-surface/80 p-3 hover:border-violet-500 transition-all duration-300">
                   <p className="flex items-center gap-2 text-sm font-semibold text-white">
                     <Icon className="text-pink-500" size={14} /> {h.title}
                   </p>
@@ -50,7 +50,7 @@ function FeaturedProject({ project }) {
 
           <div className="mt-6 flex flex-wrap gap-2">
             {project.tools.map((t) => (
-              <span key={t} className="rounded-full border border-[#16f2b3]/40 bg-[#16f2b3]/5 px-3 py-1 text-xs text-[#16f2b3]">
+              <span key={t} className="rounded-full border border-accent/40 bg-accent/5 px-3 py-1 text-xs text-accent">
                 {t}
               </span>
             ))}
@@ -71,7 +71,7 @@ function FeaturedProject({ project }) {
             </button>
             <button
               onClick={() => askAbout("How does Integral Assistant work, and how does it keep writes safe?")}
-              className="flex items-center gap-2 rounded-full border border-[#1f223c] px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-gray-300 hover:text-white hover:border-violet-500 transition-all duration-200"
+              className="flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-gray-300 hover:text-white hover:border-violet-500 transition-all duration-200"
             >
               <FaComments size={12} /> Ask about it
             </button>
@@ -79,7 +79,7 @@ function FeaturedProject({ project }) {
         </div>
 
         <div className="lg:col-span-2 flex flex-col">
-          <div className="rounded-lg border border-[#1b2c68a0] bg-[#0a0d1f] overflow-hidden">
+          <div className="rounded-lg border border-edge/60 bg-surface overflow-hidden">
             <div className="flex items-center gap-2 border-b-[2px] border-indigo-900 px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-red-400"></div>
               <div className="h-3 w-3 rounded-full bg-orange-400"></div>
@@ -105,8 +105,8 @@ function FeaturedProject({ project }) {
             </code>
           </div>
           {project.flow && (
-            <div className="mt-4 rounded-lg border border-[#1f223c] bg-[#11152c]/80 p-4">
-              <p className="mb-3 font-mono text-xs text-gray-500">{"// how a request flows"}</p>
+            <div className="mt-4 rounded-lg border border-line bg-surface/80 p-4">
+              <p className="mb-3 font-mono text-xs text-muted">{"// how a request flows"}</p>
               <ol className="space-y-3">
                 {project.flow.map(([step, text], i) => (
                   <li key={step} className="flex items-start gap-3">

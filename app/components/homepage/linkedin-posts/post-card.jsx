@@ -12,10 +12,10 @@ function formatDate(iso) {
 
 function PostCard({ post }) {
   return (
-    <div className="border border-[#1d293a] hover:border-[#464c6a] transition-all duration-500 bg-[#1b203e] rounded-lg relative group flex flex-col">
+    <div className="border border-line hover:border-edge transition-all duration-500 bg-surface rounded-lg relative group flex flex-col">
       <div className="h-1 w-full rounded-t-lg bg-gradient-to-r from-[#0a66c2] via-violet-500 to-pink-500" />
       <div className="p-3 sm:p-4 flex flex-col flex-1">
-        <div className="flex justify-between items-center text-[#16f2b3] text-sm">
+        <div className="flex justify-between items-center text-accent text-sm">
           <p className="flex items-center gap-2">
             <FaLinkedin size={16} className="text-[#0a66c2] bg-white rounded-sm" />
             {formatDate(post.date)}
@@ -42,13 +42,13 @@ function PostCard({ post }) {
 
         <div className="flex flex-wrap gap-2 mb-3">
           {post.tags.map((tag, i) => (
-            <span key={i} className="text-xs text-[#16f2b3] border border-[#16f2b3]/40 rounded-full px-2 py-0.5">
+            <span key={i} className="text-xs text-accent border border-accent/40 rounded-full px-2 py-0.5">
               {tag}
             </span>
           ))}
         </div>
 
-        <p className='text-sm lg:text-base text-[#d3d8e8] pb-4 line-clamp-4 flex-1'>
+        <p className='text-sm lg:text-base text-soft pb-4 line-clamp-4 flex-1'>
           {post.excerpt}
         </p>
 

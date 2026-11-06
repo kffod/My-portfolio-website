@@ -8,11 +8,11 @@ function CertCard({ cert }) {
     <div
       className={`rounded-lg border p-4 flex flex-col gap-2 transition-all duration-300 ${
         cert.highlight
-          ? "border-violet-500/60 bg-gradient-to-br from-[#1a1443] to-[#0d1224] hover:border-pink-500"
-          : "border-[#1f223c] bg-[#11152c] hover:border-violet-500"
+          ? "border-violet-500/60 bg-gradient-to-br from-raised to-page hover:border-pink-500"
+          : "border-line bg-surface hover:border-violet-500"
       }`}
     >
-      <div className="flex items-center gap-2 text-xs text-[#16f2b3]">
+      <div className="flex items-center gap-2 text-xs text-accent">
         <FaCertificate size={12} />
         <span>{cert.issuer} · {cert.date}</span>
       </div>
@@ -28,7 +28,7 @@ function CertCard({ cert }) {
           <FaExternalLinkAlt size={10} />
         </Link>
       ) : (
-        <span className="text-xs text-gray-500">Internal DXC certification</span>
+        <span className="text-xs text-muted">Internal DXC certification</span>
       )}
     </div>
   );
@@ -39,7 +39,7 @@ function Certifications() {
   const others = certifications.filter((c) => !c.highlight);
 
   return (
-    <div id="certifications" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+    <div id="certifications" className="relative z-50 border-t my-12 lg:my-24 border-line">
       <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20"></div>
 
       <div className="flex justify-center -translate-y-[1px]">
@@ -50,11 +50,11 @@ function Certifications() {
 
       <div className="flex justify-center my-5 lg:py-8">
         <div className="flex items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+          <span className="w-24 h-[2px] bg-raised"></span>
+          <span className="bg-raised w-fit text-white p-2 px-5 text-xl rounded-md">
             Certifications
           </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
+          <span className="w-24 h-[2px] bg-raised"></span>
         </div>
       </div>
 

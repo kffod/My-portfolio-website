@@ -28,14 +28,14 @@ function AboutSection() {
   return (
     <div id="about" className="my-12 lg:my-16 relative">
       <div className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
+        <span className="bg-raised w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
           ABOUT ME
         </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
+        <span className="h-36 w-[2px] bg-raised"></span>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div className="order-2 lg:order-1">
-          <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
+          <p className="font-medium mb-5 text-accent text-xl uppercase">
             Who am I?
           </p>
 
@@ -46,7 +46,7 @@ function AboutSection() {
             </p>
             <p>
               At <span className="text-white font-semibold">DXC Technology</span> I built{" "}
-              <span className="text-[#16f2b3] font-semibold">Integral Assistant</span>, from prototype to a deployed
+              <span className="text-accent font-semibold">Integral Assistant</span>, from prototype to a deployed
               pilot. It brings Claude to IBM i / SMART/400 R26 (LIFE/Asia), the latest release of the platform behind DXC&apos;s life
               insurance software, and is designed for the business analysts and developers who work in it every day.
             </p>
@@ -54,8 +54,8 @@ function AboutSection() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
             {strengths.map((item) => (
-              <div key={item.title} className="rounded-lg border border-[#1f223c] bg-[#11152c] p-3 hover:border-violet-500 transition-all duration-300">
-                <p className="text-[#16f2b3] text-sm lg:text-base font-semibold mb-1">{item.title}</p>
+              <div key={item.title} className="rounded-lg border border-line bg-surface p-3 hover:border-violet-500 transition-all duration-300">
+                <p className="text-accent text-sm lg:text-base font-semibold mb-1">{item.title}</p>
                 <p className="text-gray-300 text-xs lg:text-sm leading-relaxed">{item.text}</p>
               </div>
             ))}
@@ -71,7 +71,7 @@ function AboutSection() {
             {stack.map((item) => (
               <span
                 key={item}
-                className="text-xs lg:text-sm text-[#16f2b3] border border-[#16f2b3]/40 bg-[#16f2b3]/5 rounded-full px-3 py-1"
+                className="text-xs lg:text-sm text-accent border border-accent/40 bg-accent/5 rounded-full px-3 py-1"
               >
                 {item}
               </span>

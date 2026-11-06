@@ -6,6 +6,9 @@ import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./css/card.scss";
 import "./css/globals.scss";
+import "./css/theme.scss";
+import "./css/retro.scss";
+import Achievements from "./components/helper/achievements";
 import AskWidget from "./components/helper/ask-widget";
 import ScrollToTop from "./components/helper/scroll-to-top";
 const inter = Inter({ subsets: ["latin"] });
@@ -18,9 +21,21 @@ export const metadata = {
     "Sachin Jadhav, AI full-stack engineer at DXC Technology. Ships production AI agents end to end with Claude, MCP, RAG, Bedrock Knowledge Base, vector DBs and Python FastAPI. Built Integral Assistant, an agentic AI assistant for IBM i / SMART/400.",
 };
 
+// dark scrollbars/form controls, and the phone browser's top bar colour
+export const viewport = {
+  themeColor: "#0d1224",
+  colorScheme: "dark",
+};
+
+// applies the saved theme before the page paints, so it never flashes the default first
+const THEME_INIT = `try{var t=localStorage.getItem("portfolio-theme");if(t==="green"||t==="amber")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+      </head>
       <body className={inter.className}>
         <ToastContainer />
         <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
@@ -28,6 +43,7 @@ export default function RootLayout({ children }) {
           {children}
           <ScrollToTop />
           <AskWidget />
+          <Achievements />
         </main>
         <Footer />
       </body>
