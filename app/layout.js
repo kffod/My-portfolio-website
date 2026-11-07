@@ -1,5 +1,5 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
@@ -11,9 +11,28 @@ import "./css/motion.scss";
 import Achievements from "./components/helper/achievements";
 import AskWidget from "./components/helper/ask-widget";
 import ScrollToTop from "./components/helper/scroll-to-top";
-// IBM Plex: a type family with engineering character (and a nod to the IBM i work)
-const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans", display: "swap" });
-const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
+
+// IBM Plex: a type family with engineering character (and a nod to the IBM i work).
+// The font files are bundled in app/fonts, so the build never depends on Google Fonts
+// (Google's newer CSS format breaks the font loader in Next.js 14.1).
+const plexSans = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-sans-latin-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-sans",
+  display: "swap",
+});
+const plexMono = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-mono-latin-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-mono-latin-500.woff2", weight: "500", style: "normal" },
+  ],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://www.sachinjadhavofficial.com"),
