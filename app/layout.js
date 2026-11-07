@@ -37,6 +37,15 @@ const plexMono = localFont({
 export const metadata = {
   metadataBase: new URL("https://www.sachinjadhavofficial.com"),
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
+  },
+  manifest: "/site.webmanifest",
   title: "Sachin Jadhav | AI Engineer · Agents, RAG, MCP",
   description:
     "Sachin Jadhav, AI full-stack engineer at DXC Technology. Ships production AI agents end to end with Claude, MCP, RAG, Bedrock Knowledge Base, vector DBs and Python FastAPI. Built Integral Assistant, an agentic AI assistant for IBM i / SMART/400.",
