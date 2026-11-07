@@ -23,7 +23,7 @@ function NavLink({ link, onClick }) {
     <Link
       href={link.href}
       onClick={onClick}
-      className={`block whitespace-nowrap rounded-md px-3 py-2 text-sm uppercase no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline focus-visible:ring-2 focus-visible:ring-accent ${
+      className={`block whitespace-nowrap rounded-md px-3 py-2 text-sm uppercase no-underline outline-none transition-colors duration-300 hover:text-accent hover:no-underline focus-visible:ring-2 focus-visible:ring-accent ${
         link.mono ? "font-mono text-accent" : "text-white"
       }`}
     >
@@ -71,7 +71,7 @@ function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="rounded-md border border-line p-2 text-white transition-colors duration-200 hover:border-accent hover:text-accent"
+            className="m-btn rounded-md border border-line p-2 text-white transition-colors duration-200 hover:border-accent hover:text-accent"
           >
             {open ? <HiOutlineX size={22} /> : <HiOutlineMenu size={22} />}
           </button>
@@ -81,7 +81,7 @@ function Navbar() {
       {open && (
         <ul
           id="mobile-menu"
-          className="absolute left-0 right-0 top-full grid grid-cols-2 gap-1 rounded-lg border border-line bg-surface/95 p-3 shadow-[0_0_30px_0_rgb(var(--c-violet-600)/0.25)] backdrop-blur lg:hidden"
+          className="absolute left-0 right-0 top-full grid grid-cols-2 gap-1 rounded-lg border border-line bg-surface/95 p-3 shadow-xl shadow-black/40 backdrop-blur lg:hidden"
         >
           {LINKS.map((link) => (
             <li key={link.href}>

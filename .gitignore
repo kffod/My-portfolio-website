@@ -17,3 +17,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
+
+# AI design skills installed locally (about 35 MB per copy): keep them out of the repo and the deploy
+.agents/
+.claude/
+.bob/
+.impeccable/
+.taste-skill/
+skills-lock.json
+shots/

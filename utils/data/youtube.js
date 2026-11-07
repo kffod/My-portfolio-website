@@ -19,7 +19,8 @@ export const youtube = {
     "F9ydWBgGUXc",
   ],
 
-  autoLatest: true,
+  // off: only the pinned videos are shown. Set to true to add your newest uploads again.
+  autoLatest: false,
   maxLatest: 3,
 
   excludeWords: [

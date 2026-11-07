@@ -69,7 +69,7 @@ body {
 }
 
 ::selection {
-  background: rgb(var(--c-violet-600) / 0.45);
+  background: rgb(var(--c-accent) / 0.3);
   color: #fff;
 }
 
@@ -90,7 +90,7 @@ html {
   border: 2px solid rgb(var(--c-page));
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--c-violet-500));
+  background: rgb(var(--c-accent));
 }
 
 // stop browser autofill painting the contact form fields white or yellow
@@ -104,18 +104,36 @@ textarea:-webkit-autofill {
   transition: background-color 9999s ease-out;
 }
 
-// the decorative background artwork is purple; tint it to match the other themes
-[data-theme="green"] {
-  img[src*="hero.svg"],
-  img[src*="section.svg"],
-  img[src*="blur-23.svg"] {
-    filter: hue-rotate(-130deg) saturate(0.9);
-  }
+// The Experience/Education animations are drawn in purple and pink.
+// Turn them into a single-colour illustration in the theme's accent:
+// grayscale + sepia gives one warm hue, hue-rotate moves it to the accent
+// (Midnight #16f2b3, Green #33ff66, Amber #ffb000). Transparent areas stay transparent.
+.theme-art {
+  filter: grayscale(1) contrast(1.1) sepia(1) hue-rotate(112deg) saturate(2) brightness(1.05);
+  transition: filter 0.3s ease;
 }
-[data-theme="amber"] {
-  img[src*="hero.svg"],
-  img[src*="section.svg"],
-  img[src*="blur-23.svg"] {
-    filter: hue-rotate(140deg) saturate(1.1);
+[data-theme="green"] .theme-art,
+[data-theme="retro"] .theme-art {
+  filter: grayscale(1) contrast(1.1) sepia(1) hue-rotate(83deg) saturate(2) brightness(1.05);
+}
+[data-theme="amber"] .theme-art {
+  filter: grayscale(1) contrast(1.1) sepia(1) hue-rotate(3deg) saturate(2) brightness(1.05);
+}
+
+// headings even out their lines; paragraphs avoid a single word on the last line
+h1, h2, h3 {
+  text-wrap: balance;
+}
+p, li {
+  text-wrap: pretty;
+}
+
+// visitors who ask their system for less motion get none
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

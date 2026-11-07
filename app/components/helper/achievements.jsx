@@ -174,7 +174,7 @@ function Achievements() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label={`Achievements: ${count} of ${total} unlocked`}
-        className="fixed bottom-24 right-6 z-50 flex items-center gap-1.5 rounded-full border border-line bg-surface/90 px-3 py-2 text-xs font-medium text-white shadow-[0_0_20px_0_rgb(var(--c-violet-600)/0.35)] backdrop-blur transition-all duration-300 hover:scale-105 hover:border-accent"
+        className="m-btn fixed bottom-24 right-6 z-50 flex items-center gap-1.5 rounded-full border border-line bg-surface/90 px-3 py-2 text-xs font-medium text-white shadow-xl shadow-black/40 backdrop-blur transition-all duration-300 hover:border-accent"
       >
         <span aria-hidden="true">🏆</span>
         <span className="font-mono">
@@ -186,9 +186,8 @@ function Achievements() {
         <div
           role="dialog"
           aria-label="Achievements"
-          className="fixed bottom-40 right-4 z-50 w-[min(92vw,340px)] overflow-hidden rounded-lg border border-line bg-surface/95 text-white shadow-[0_0_40px_0_rgb(var(--c-violet-600)/0.35)] backdrop-blur"
+          className="fixed bottom-40 right-4 z-50 w-[min(92vw,340px)] overflow-hidden rounded-lg border border-line bg-surface/95 text-white shadow-xl shadow-black/40 backdrop-blur"
         >
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600" />
           <div className="px-4 pb-2 pt-3">
             <div className="flex items-center justify-between">
               <p className="font-semibold text-accent">Achievements</p>
@@ -198,7 +197,7 @@ function Achievements() {
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-page">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-pink-500 to-violet-600 transition-all duration-500"
+                className="h-full rounded-full bg-accent transition-all duration-500"
                 style={{ width: `${(count / total) * 100}%` }}
               />
             </div>
@@ -227,7 +226,7 @@ function Achievements() {
             })}
           </ul>
 
-          <div className="flex items-center justify-between border-t border-line px-4 py-2 text-[11px] text-muted">
+          <div className="flex items-center justify-between border-t border-line px-4 py-2 text-xs text-muted">
             <span>Saved only in this browser.</span>
             <button type="button" onClick={reset} className="hover:text-white">
               Reset

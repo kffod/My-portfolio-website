@@ -70,20 +70,19 @@ function TerminalSection() {
 
   return (
     <div id="terminal" className="relative z-50 border-t my-12 lg:my-24 border-line scroll-mt-6">
-      <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl opacity-20"></div>
 
       <div className="flex justify-center -translate-y-[1px]">
         <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent w-full" />
+          <div className="h-[1px] bg-gradient-to-r from-transparent via-edge to-transparent w-full" />
         </div>
       </div>
 
       <div className="flex justify-center my-5 lg:py-8">
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-raised"></span>
-          <span className="bg-raised w-fit text-white p-2 px-5 text-xl rounded-md flex items-center gap-2">
+          <h2 className="bg-raised w-fit text-white p-2 px-5 text-xl rounded-md flex items-center gap-2">
             <FaTerminal size={16} /> Terminal Mode
-          </span>
+          </h2>
           <span className="w-24 h-[2px] bg-raised"></span>
         </div>
       </div>
@@ -98,19 +97,15 @@ function TerminalSection() {
             key={c.label}
             onClick={() => send(c.command || c.label)}
             title={c.hint}
-            className="font-mono text-xs lg:text-sm text-accent border border-accent/40 bg-accent/5 hover:bg-accent/15 hover:border-accent rounded-full px-3 py-1 transition-all duration-200"
+            className="m-btn font-mono text-xs lg:text-sm text-accent border border-accent/40 bg-accent/5 hover:bg-accent/15 hover:border-accent rounded-full px-3 py-1 transition-all duration-200"
           >
             $ {c.label}
           </button>
         ))}
       </div>
 
-      <div className="mx-auto max-w-5xl rounded-lg border border-edge/60 bg-gradient-to-r from-page to-deep shadow-[0_0_40px_0_rgb(var(--c-violet-600)/0.25)] overflow-hidden">
-        <div className="flex flex-row">
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-          <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-        </div>
-        <div className="flex items-center justify-between px-4 py-3 border-b-[2px] border-indigo-900">
+      <div className="bg-surface mx-auto max-w-5xl rounded-lg border border-edge/60 overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 border-b-[2px] border-line">
           <div className="flex flex-row space-x-2">
             <div className="h-3 w-3 rounded-full bg-red-400"></div>
             <div className="h-3 w-3 rounded-full bg-orange-400"></div>

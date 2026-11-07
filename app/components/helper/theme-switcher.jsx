@@ -7,9 +7,9 @@ import { useCallback, useEffect, useState } from "react";
 const KEY = "portfolio-theme";
 
 const THEMES = [
-  { id: "midnight", label: "Midnight", swatch: "linear-gradient(135deg,#ec4899,#7c3aed)", color: "#0d1224" },
-  { id: "green", label: "Terminal Green", swatch: "linear-gradient(135deg,#33ff66,#0d9488)", color: "#050c08" },
-  { id: "amber", label: "Amber", swatch: "linear-gradient(135deg,#ffb000,#ea580c)", color: "#0f0a03" },
+  { id: "midnight", label: "Midnight", swatch: "linear-gradient(135deg,#16f2b3 50%,#0d1224 50%)", color: "#0d1224" },
+  { id: "green", label: "Terminal Green", swatch: "linear-gradient(135deg,#33ff66 50%,#050c08 50%)", color: "#050c08" },
+  { id: "amber", label: "Amber", swatch: "linear-gradient(135deg,#ffb000 50%,#0f0a03 50%)", color: "#0f0a03" },
 ];
 
 function applyTheme(id) {
@@ -75,7 +75,7 @@ function ThemeSwitcher() {
           aria-label={`${theme.label} theme`}
           aria-pressed={current === theme.id}
           onClick={() => choose(theme.id)}
-          className={`h-5 w-5 rounded-full transition-all duration-200 ${
+          className={`h-5 w-5 rounded-full border border-edge transition-all duration-200 ${
             current === theme.id
               ? "scale-110 ring-2 ring-accent ring-offset-2 ring-offset-page"
               : "opacity-60 hover:opacity-100"

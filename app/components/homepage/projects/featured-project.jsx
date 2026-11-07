@@ -13,16 +13,12 @@ function askAbout(question) {
 
 function FeaturedProject({ project }) {
   return (
-    <div className="relative rounded-xl border border-violet-500/40 bg-gradient-to-br from-raised via-page to-deep shadow-[0_0_50px_0_rgb(var(--c-violet-600)/0.25)] overflow-hidden">
-      <div className="flex flex-row">
-        <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-        <div className="h-[2px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-      </div>
+    <div className="relative">
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 p-5 lg:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
         <div className="lg:col-span-3 flex flex-col">
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-3 py-1 font-semibold uppercase tracking-wider text-white">
+            <span className="font-semibold uppercase tracking-wider text-accent">
               Featured
             </span>
             {project.org && <span className="text-accent">{project.org}</span>}
@@ -32,15 +28,15 @@ function FeaturedProject({ project }) {
 
           <h3 className="mt-4 text-2xl lg:text-4xl font-bold text-white">{project.name}</h3>
           <p className="mt-1 text-base lg:text-xl text-accent">{project.tagline}</p>
-          <p className="mt-4 text-sm lg:text-base leading-relaxed text-gray-300">{project.description}</p>
+          <p className="mt-4 max-w-[34rem] text-sm lg:text-base leading-relaxed text-gray-300">{project.description}</p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
             {project.highlights.map((h) => {
               const Icon = ICONS[h.icon] || FaRobot;
               return (
-                <div key={h.title} className="rounded-lg border border-line bg-surface/80 p-3 hover:border-violet-500 transition-all duration-300">
+                <div key={h.title}>
                   <p className="flex items-center gap-2 text-sm font-semibold text-white">
-                    <Icon className="text-pink-500" size={14} /> {h.title}
+                    <Icon className="text-accent" size={14} /> {h.title}
                   </p>
                   <p className="mt-1 text-xs lg:text-sm leading-relaxed text-gray-400">{h.text}</p>
                 </div>
@@ -59,19 +55,19 @@ function FeaturedProject({ project }) {
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <button
               onClick={() => runInTerminal("integral")}
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:gap-3 transition-all duration-200"
+              className="m-btn flex items-center gap-2 rounded-full bg-accent hover:bg-accent/90 px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-page transition-all duration-200"
             >
               <FaPlay size={11} /> Watch the demo
             </button>
             <button
               onClick={() => runInTerminal("integral arch")}
-              className="flex items-center gap-2 rounded-full border border-violet-500/60 px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:border-pink-500 transition-all duration-200"
+              className="m-btn flex items-center gap-2 rounded-full border border-edge px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-white hover:border-accent/60 transition-all duration-200"
             >
               <FaSitemap size={12} /> Architecture
             </button>
             <button
               onClick={() => askAbout("How does Integral Assistant work, and how does it keep writes safe?")}
-              className="flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-gray-300 hover:text-white hover:border-violet-500 transition-all duration-200"
+              className="m-btn flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-xs md:text-sm font-medium uppercase tracking-wider text-gray-300 hover:text-white hover:border-accent/60 transition-all duration-200"
             >
               <FaComments size={12} /> Ask about it
             </button>
@@ -80,7 +76,7 @@ function FeaturedProject({ project }) {
 
         <div className="lg:col-span-2 flex flex-col">
           <div className="rounded-lg border border-edge/60 bg-surface overflow-hidden">
-            <div className="flex items-center gap-2 border-b-[2px] border-indigo-900 px-4 py-3">
+            <div className="flex items-center gap-2 border-b-[2px] border-line px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-red-400"></div>
               <div className="h-3 w-3 rounded-full bg-orange-400"></div>
               <div className="h-3 w-3 rounded-full bg-green-200"></div>
@@ -105,12 +101,12 @@ function FeaturedProject({ project }) {
             </code>
           </div>
           {project.flow && (
-            <div className="mt-4 rounded-lg border border-line bg-surface/80 p-4">
+            <div className="mt-6 border-t border-line pt-5">
               <p className="mb-3 font-mono text-xs text-muted">{"// how a request flows"}</p>
               <ol className="space-y-3">
                 {project.flow.map(([step, text], i) => (
                   <li key={step} className="flex items-start gap-3">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-600 text-xs font-semibold text-white">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-edge bg-raised text-xs font-semibold text-accent">
                       {i + 1}
                     </span>
                     <p className="text-sm leading-6">

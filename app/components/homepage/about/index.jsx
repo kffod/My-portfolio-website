@@ -1,7 +1,6 @@
 // @flow strict
 
-import { personalData } from "@/utils/data/personal-data";
-import Image from "next/image";
+import IntroVideo from "./intro-video";
 
 const strengths = [
   {
@@ -27,7 +26,7 @@ const stack = ["Claude", "MCP", "LangChain", "RAG", "Agentic Workflows", "Bedroc
 function AboutSection() {
   return (
     <div id="about" className="my-12 lg:my-16 relative">
-      <div className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
+      <div aria-hidden="true" className="hidden lg:flex flex-col items-center absolute top-16 -right-8">
         <span className="bg-raised w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
           ABOUT ME
         </span>
@@ -35,9 +34,9 @@ function AboutSection() {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div className="order-2 lg:order-1">
-          <p className="font-medium mb-5 text-accent text-xl uppercase">
+          <h2 className="font-medium mb-5 text-accent text-xl uppercase">
             Who am I?
-          </p>
+          </h2>
 
           <div className="space-y-4 text-gray-200 text-sm lg:text-lg leading-relaxed">
             <p>
@@ -54,7 +53,7 @@ function AboutSection() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
             {strengths.map((item) => (
-              <div key={item.title} className="rounded-lg border border-line bg-surface p-3 hover:border-violet-500 transition-all duration-300">
+              <div key={item.title} className="rounded-lg border border-line bg-surface p-3 hover:border-accent/60 transition-all duration-300">
                 <p className="text-accent text-sm lg:text-base font-semibold mb-1">{item.title}</p>
                 <p className="text-gray-300 text-xs lg:text-sm leading-relaxed">{item.text}</p>
               </div>
@@ -78,14 +77,8 @@ function AboutSection() {
             ))}
           </div>
         </div>
-        <div className="flex justify-center order-1 lg:order-2">
-          <Image
-            src={personalData.profile}
-            width={280}
-            height={280}
-            alt={personalData.name}
-            className="rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer"
-          />
+        <div className="flex justify-center order-1 lg:order-2 lg:pr-14">
+          <IntroVideo />
         </div>
       </div>
     </div>

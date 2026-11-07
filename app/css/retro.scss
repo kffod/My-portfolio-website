@@ -20,7 +20,7 @@
   --c-violet-600: 22 163 74;
 
   body {
-    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+    font-family: var(--font-mono), "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
     text-shadow: 0 0 3px rgb(51 255 102 / 0.45);
   }
 

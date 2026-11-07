@@ -1,17 +1,19 @@
 import { GoogleTagManager } from "@next/third-parties/google";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
-import "./css/card.scss";
 import "./css/globals.scss";
 import "./css/theme.scss";
 import "./css/retro.scss";
+import "./css/motion.scss";
 import Achievements from "./components/helper/achievements";
 import AskWidget from "./components/helper/ask-widget";
 import ScrollToTop from "./components/helper/scroll-to-top";
-const inter = Inter({ subsets: ["latin"] });
+// IBM Plex: a type family with engineering character (and a nod to the IBM i work)
+const plexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans", display: "swap" });
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 export const metadata = {
   metadataBase: new URL("https://www.sachinjadhavofficial.com"),
@@ -36,7 +38,7 @@ export default function RootLayout({ children }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
       </head>
-      <body className={inter.className}>
+      <body className={`${plexSans.variable} ${plexMono.variable} font-sans antialiased`}>
         <ToastContainer />
         <main className="min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white">
           <Navbar />

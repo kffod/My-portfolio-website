@@ -19,8 +19,11 @@ const AnimationLottie = ({ animationPath, width }) => {
     }
   };
 
+  // .theme-art (theme.scss) tints the purple artwork to the current theme's accent
   return (
-    <Lottie {...defaultOptions} />
+    <div className="theme-art">
+      <Lottie {...defaultOptions} />
+    </div>
   );
 };
 

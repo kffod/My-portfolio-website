@@ -77,19 +77,15 @@ function AskWidget() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label="Ask my portfolio"
-        className="fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-pink-500 px-4 py-3 text-sm font-medium text-white shadow-[0_0_25px_rgb(var(--c-violet-600)/0.45)] hover:scale-105 transition-all duration-300"
+        className="m-btn fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full bg-accent hover:bg-accent/90 px-4 py-3 text-sm font-medium text-page shadow-xl shadow-black/40 transition-all duration-300"
       >
         {open ? <FaTimes size={14} /> : <FaRobot size={16} />}
         <span className="hidden sm:inline">{open ? "Close" : "Ask my portfolio"}</span>
       </button>
 
       {open && (
-        <div className="fixed bottom-24 left-4 right-4 sm:left-6 sm:right-auto sm:w-[400px] z-50 flex max-h-[70vh] flex-col rounded-lg border border-edge/60 bg-page text-white shadow-[0_0_40px_rgb(var(--c-violet-600)/0.35)]">
-          <div className="flex flex-row">
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
-            <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
-          </div>
-          <div className="border-b border-indigo-900 px-4 py-3">
+        <div className="fixed bottom-24 left-4 right-4 sm:left-6 sm:right-auto sm:w-[400px] z-50 flex max-h-[70vh] flex-col rounded-lg border border-edge/60 bg-page text-white shadow-xl shadow-black/40">
+          <div className="border-b border-line px-4 py-3">
             <p className="font-semibold text-accent">Ask my portfolio</p>
             <p className="text-xs text-gray-400">Searches this site and answers with its sources.</p>
           </div>
@@ -102,7 +98,7 @@ function AskWidget() {
                   <button
                     key={s}
                     onClick={() => ask(s)}
-                    className="block w-full rounded-md border border-line bg-surface px-3 py-2 text-left text-gray-200 transition-all duration-200 hover:border-violet-500"
+                    className="block w-full rounded-md border border-line bg-surface px-3 py-2 text-left text-gray-200 transition-all duration-200 hover:border-accent/60"
                   >
                     {s}
                   </button>
@@ -112,13 +108,13 @@ function AskWidget() {
 
             {items.map((item, i) => (
               <div key={i} className="space-y-2">
-                <p className="ml-auto w-fit max-w-[85%] rounded-lg bg-violet-600/30 px-3 py-2">{item.q}</p>
+                <p className="ml-auto w-fit max-w-[85%] rounded-lg bg-raised px-3 py-2">{item.q}</p>
                 {item.error ? (
                   <p className="rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-red-300">{item.error}</p>
                 ) : (
                   <div className="rounded-lg border border-line bg-surface px-3 py-2 leading-relaxed text-gray-200">
                     <p>{renderAnswer(item.answer)}</p>
-                    <p className="mt-1 text-[10px] text-muted">
+                    <p className="mt-1 text-xs text-muted">
                       {item.mode === "ai" ? "AI-written from this portfolio. It can make mistakes." : "Matched from this portfolio's content."}
                     </p>
                     {item.sources.length > 0 && (
@@ -150,25 +146,25 @@ function AskWidget() {
               e.preventDefault();
               ask();
             }}
-            className="flex items-center gap-2 border-t border-indigo-900 px-3 py-3"
+            className="flex items-center gap-2 border-t border-line px-3 py-3"
           >
             <input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               maxLength={300}
               placeholder="Ask about Sachin's work…"
-              className="flex-1 rounded-md border border-line bg-surface px-3 py-2 text-sm text-white outline-none focus:border-violet-500"
+              className="flex-1 rounded-md border border-line bg-surface px-3 py-2 text-sm text-white outline-none focus:border-accent"
             />
             <button
               type="submit"
               disabled={loading || question.trim().length < 3}
               aria-label="Send"
-              className="rounded-md bg-gradient-to-r from-violet-600 to-pink-500 p-2.5 text-white transition-opacity disabled:opacity-40"
+              className="rounded-md bg-accent p-2.5 text-page transition-opacity disabled:opacity-40"
             >
               <FaPaperPlane size={14} />
             </button>
           </form>
-          <p className="px-4 pb-2 text-[10px] text-muted">Answers come only from this portfolio's content.</p>
+          <p className="px-4 pb-2 text-xs text-muted">Answers come only from this portfolio's content.</p>
         </div>
       )}
     </>

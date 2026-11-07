@@ -160,14 +160,14 @@ function ContactWithoutCaptcha() {
             <button
               type="submit"
               disabled={sending}
-              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold disabled:opacity-60"
+              className="m-btn flex items-center gap-1 rounded-full bg-accent hover:bg-accent/90 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-page no-underline transition-all duration-200 ease-out hover:text-page hover:no-underline md:font-semibold disabled:opacity-60"
             >
               <span>{sending ? 'Sending…' : 'Send Message'}</span>
               <TbMailForward className="mt-1" size={18} />
             </button>
             <p className="text-xs text-muted">
               Or email me directly at{' '}
-              <a href={`mailto:${personalData.email}`} className="text-accent hover:text-pink-500">{personalData.email}</a>
+              <a href={`mailto:${personalData.email}`} className="text-accent hover:text-white">{personalData.email}</a>
             </p>
           </div>
         </div>

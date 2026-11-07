@@ -1,0 +1,78 @@
+// Hover and press feedback (Taste Skill motion rules), kept small and consistent.
+//   .m-btn    buttons and icon links: rise 1px on hover, sink 1px and shrink slightly on click
+//   .m-press  tabs and filters: press only
+//   .m-lift   cards that hold a link: lift 2px on hover (their border change stays as it was)
+//   .m-zoom   a card whose thumbnail zooms to 1.03 inside its frame
+//   .m-arrow  a link whose trailing arrow nudges 3px right
+// Hover effects only run with a mouse or trackpad, and nothing moves under reduced motion.
+// The `html` prefix lets these win over Tailwind's transition classes on the same element.
+
+:root {
+  --m-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --m-in: 140ms;
+  --m-out: 200ms;
+  --m-press: 90ms;
+  --m-image: 600ms;
+}
+
+html .m-btn,
+html .m-press,
+html .m-lift {
+  transition-property: transform, color, background-color, border-color, opacity;
+  transition-duration: var(--m-out);
+  transition-timing-function: var(--m-ease);
+}
+
+html .m-zoom img {
+  transition: transform var(--m-image) var(--m-ease), opacity var(--m-out) var(--m-ease);
+}
+
+html .m-arrow svg:last-child {
+  transition: transform var(--m-out) var(--m-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html .m-btn:hover {
+    transform: translateY(-1px);
+    transition-duration: var(--m-in);
+  }
+  html .m-lift:hover {
+    transform: translateY(-2px);
+    transition-duration: 180ms;
+  }
+  html .m-zoom:hover img {
+    transform: scale(1.03);
+  }
+  html .m-arrow:hover svg:last-child {
+    transform: translateX(3px);
+    transition-duration: var(--m-in);
+  }
+}
+
+html .m-btn:active:not(:disabled),
+html .m-press:active {
+  transform: translateY(1px) scale(0.985);
+  transition-duration: var(--m-press);
+}
+
+// keyboard focus: a 2px accent ring that settles in from 6px out
+:where(a, button, [role="button"], [role="tab"], summary):focus-visible:not(.outline-none) {
+  outline: 2px solid rgb(var(--c-accent));
+  outline-offset: 2px;
+  animation: m-focus var(--m-out) var(--m-ease);
+}
+@keyframes m-focus {
+  from {
+    outline-offset: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html .m-btn,
+  html .m-press,
+  html .m-lift,
+  html .m-zoom img,
+  html .m-arrow svg {
+    transform: none !important;
+  }
+}
